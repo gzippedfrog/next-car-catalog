@@ -1,0 +1,205 @@
+$green: #22BF86;
+$gray: #ACB8BF;
+
+@mixin price {
+  color: $green;
+
+  &::after {
+    color: initial;
+    content: " ₽";
+  }
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 20.2rem;
+  box-shadow: 0 .3rem 1.6rem #0e2a6029;
+  border-radius: .4rem;
+  padding: 1.3rem;
+  margin: .5rem;
+  align-self: flex-start;
+  column-gap: .25rem;
+
+  .title {
+    grid-row: 1;
+    grid-column: 1/3;
+
+    .model::after {
+      content: " ";
+    }
+
+    .year {
+      color: $green;
+    }
+  }
+
+  .vin {
+    grid-row: 2;
+    grid-column: 1/3;
+    color: #707B8C;
+    font-size: .5rem;
+    margin-bottom: .9rem;
+  }
+
+  .imageSlider {
+    grid-row: 3;
+    grid-column: 1/3;
+    width: 100%;
+    margin-bottom: .9rem;
+
+    .imageSlide {
+      height: 9.9rem;
+      width: 13.2rem;
+
+      .image {
+        border-radius: .2rem;
+      }
+    }
+  }
+
+  .infoItem {
+    margin-bottom: .9rem;
+    max-width: 100%;
+
+    .infoItemTitle {
+      font-size: 0.5rem;
+      color: $gray;
+      text-transform: uppercase;
+    }
+
+    .infoItemValue {
+      display: flex;
+      flex-wrap: wrap;
+      font-size: .7rem;
+
+      .optionName {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+      .otherOptions {
+        color: $gray;
+        flex-shrink: 0;
+      }
+
+      .separator {
+        color: $green;
+
+        &::before {
+          content: "\00a0/\00a0";
+        }
+      }
+    }
+  }
+
+  .options {
+    grid-column: 1/3;
+
+    .infoItemValue {
+      flex-wrap: nowrap;
+    }
+  }
+
+  .color {
+    grid-row: 5;
+  }
+
+  .prices {
+    grid-column: 1;
+
+    .carPrice {
+      @include price();
+    }
+
+    .options {
+      font-size: .7rem;
+
+      .optionsPrice {
+        @include price();
+      }
+    }
+  }
+}
+
+.buyBtn {
+  display: inline-block;
+  align-self: center;
+  height: 2.4rem;
+  margin: .425rem 0;
+  color: #FFF;
+  background: linear-gradient(252deg, #11998E 0%, #38EF7D 100%);
+  border: solid 0;
+  border-radius: .4rem;
+  text-align: center;
+  line-height: 2.4rem;
+  text-transform: uppercase;
+  font-size: .5rem;
+  font-weight: bold;
+  letter-spacing: .1rem;
+  user-select: none;
+  cursor: pointer;
+
+  &::before {
+    content: "купить";
+  }
+}
+
+.buyBtnOrder {
+  &::before {
+    content: "купить под заказ";
+  }
+}
+
+.buyBtnSold {
+  color: #707B8C;
+  background: #E7EBF0;
+  cursor: not-allowed;
+
+  &::before {
+    content: "в поставке";
+  }
+}
+
+.favBtn {
+  display: none;
+}
+
+.card:hover {
+
+  .color,
+  .options {
+    display: none;
+  }
+
+  .transmissionType {
+    grid-row: 5;
+  }
+
+  .mileage {
+    grid-row: 6;
+  }
+
+  .buyBtn {
+    grid-row: 7;
+    grid-column: 2;
+  }
+
+  .prices {
+    grid-column: 2/3;
+    grid-row: 4;
+  }
+
+  .favBtn {
+    display: initial;
+    grid-row: 7;
+    align-self: center;
+    justify-self: right;
+    color: $green;
+    margin-right: .5rem;
+    cursor: pointer;
+    width: 1rem;
+    height: 1rem;
+  }
+}

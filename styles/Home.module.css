@@ -1,0 +1,12 @@
+.main {
+  min-height: 100vh;
+}
+
+.brandsSelect {
+  display: block;
+  background: #35373a;
+  color: #fff;
+  border: solid transparent 0.8rem;
+  border-radius: 0.2rem;
+  margin: 0.5rem 0;
+}
